@@ -8,6 +8,8 @@ public class ballmovement : MonoBehaviour
     public Rigidbody2D sesuatu;
     public GameObject masterScript;
     public Animator animtr;
+    public AudioSource hitEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,9 @@ public class ballmovement : MonoBehaviour
         if(other.collider.name=="dindingKanan" || other.collider.name=="dindingKiri"){
             masterScript.GetComponent<ScoringScript>().UpdateScore(other.collider.name);
             StartCoroutine(jeda()); // untuk pindah ke tengah
+        }
+        if(other.collider.tag=="Player"){
+            hitEffect.Play();
         }
     }
 
